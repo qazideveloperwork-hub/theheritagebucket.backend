@@ -16,6 +16,23 @@
     <div class="grid gap-6 lg:grid-cols-2 items-start">
         <div class="space-y-6">
             <section class="rounded-[28px] border border-[#e6d9c5] bg-white p-6">
+                <h2 class="text-lg font-semibold text-[#523923]">General</h2>
+                <p class="mt-1 text-xs text-[#8a6c56]">Used to complete product/slider image or link fields that are saved as a relative path (e.g. "/storage/media/xyz.jpg") instead of a full URL. Change this once here if this admin site ever moves to a different domain.</p>
+                <form action="{{ route('settings.options.update') }}" method="POST" class="mt-4 space-y-5" novalidate>
+                    @csrf
+                    @method('PUT')
+                    <input type="hidden" name="section" value="general">
+                    <div>
+                        <label class="mb-2 block text-sm font-medium text-[#5a4538]">Base URL</label>
+                        <input type="url" name="base_url" value="{{ old('base_url', $setting->base_url) }}" placeholder="{{ config('app.url') }}" class="w-full rounded-2xl border border-[#d9c9ae] bg-[#faf4ec] px-4 py-3 text-sm outline-none focus:border-[#7c2d12]" />
+                        <p class="mt-1 text-xs text-[#8a6c56]">Leave blank to use this site's own URL ({{ config('app.url') }}).</p>
+                        @error('base_url') <p class="mt-1 text-xs text-[#b91c1c]">{{ $message }}</p> @enderror
+                    </div>
+                    <button type="submit" class="rounded-full bg-[#7C2D12] px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-[#6b2610]">Save general settings</button>
+                </form>
+            </section>
+
+            <section class="rounded-[28px] border border-[#e6d9c5] bg-white p-6">
                 <h2 class="text-lg font-semibold text-[#523923]">WhatsApp</h2>
                 <p class="mt-1 text-xs text-[#8a6c56]">Shown to customers on the storefront (WhatsApp icon on product pages &amp; checkout).</p>
                 <form action="{{ route('settings.options.update') }}" method="POST" class="mt-4 space-y-5" novalidate>

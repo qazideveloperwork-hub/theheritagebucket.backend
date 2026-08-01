@@ -23,6 +23,9 @@ class SettingController extends Controller
         $accountNumberRule = ['regex:/^([0-9]{5,20}|[A-Za-z]{2}[0-9]{2}[A-Za-z0-9]{10,30})$/'];
 
         $rules = match ($request->input('section')) {
+            'general' => [
+                'base_url' => ['nullable', 'url', 'max:255'],
+            ],
             'whatsapp' => [
                 'whatsapp_number' => array_merge(['required', 'string'], $phoneRule),
             ],

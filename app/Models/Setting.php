@@ -15,10 +15,16 @@ class Setting extends Model
         'bank_account_number',
         'bank_account_title',
         'max_quantity_per_product',
+        'base_url',
     ];
 
     public static function current(): self
     {
         return static::first() ?? static::create([]);
+    }
+
+    public static function mediaBaseUrl(): string
+    {
+        return rtrim(static::current()->base_url ?: config('app.url'), '/');
     }
 }

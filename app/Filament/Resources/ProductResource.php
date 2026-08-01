@@ -48,7 +48,7 @@ class ProductResource extends Resource
                     ->default(0),
                 Forms\Components\TextInput::make('cover_image_url')
                     ->label('Cover image URL')
-                    ->url()
+                    ->helperText('A full URL (https://...), or a relative path (e.g. /storage/media/xyz.jpg) which will be completed using the Base URL set in Settings.')
                     ->required()
                     ->maxLength(2048),
                 Forms\Components\TextInput::make('artisan_name')
@@ -57,7 +57,7 @@ class ProductResource extends Resource
                     ->columnSpanFull(),
                 Forms\Components\TextInput::make('artisan_image_url')
                     ->label('Artisan image URL')
-                    ->url()
+                    ->helperText('A full URL (https://...), or a relative path (e.g. /storage/media/xyz.jpg) which will be completed using the Base URL set in Settings.')
                     ->maxLength(2048),
                 Forms\Components\TextInput::make('dimensions')
                     ->maxLength(255),
@@ -89,7 +89,7 @@ class ProductResource extends Resource
                     ->schema([
                         Forms\Components\TextInput::make('url')
                             ->label('Image URL')
-                            ->url()
+                            ->helperText('Full URL or a relative path (completed via Settings > Base URL).')
                             ->required()
                             ->maxLength(2048),
                         Forms\Components\TextInput::make('sort_order')
